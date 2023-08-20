@@ -1,0 +1,32 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %}
+  Create Page
+{% endblock %}
+
+{% block body %}
+<h1>New Page</h1>
+<form action="" method="post" style="padding: 10px">
+  {% csrf_token %}
+  <div class="row" style="margin-bottom: 20px">
+    <label for="form.title.id_title">{{form.title.label}}</label>
+    {{ form.title }}
+  </div>  
+  {% if form.errors %}
+  <div style="margin-top: -10px; margin-bottom: 20px; color: crimson;">
+    {% for error in form.title.errors %}
+    <div class="row" style="margin-bottom: 10px">
+      {{ error }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <div class="row" style="margin-bottom: 20px;">
+    <label for="form.content.id_content">{{form.content.label}}</label>
+    {{ form.content }}
+  </div>
+  <div class="row" style="margin-bottom: 20px">
+    <input type="submit" value="Submit">
+  </div>
+</form>
+{% endblock %}
